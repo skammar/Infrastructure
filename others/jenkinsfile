@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
+        stage('GitHub') {
             steps {
                 script {
                     checkout scm
@@ -10,20 +10,39 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Docker Image & Container') {
             steps {
                 script {
                     // Implement Docker image building steps here
                     // Example: sh 'docker build -t your-docker-image .'
+                    // You may use AWS ECR credentials and push the image to ECR
                 }
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Kubernetes Deployment') {
             steps {
                 script {
                     // Implement Kubernetes deployment steps here
                     // Example: sh 'kubectl apply -f deployment.yml'
+                }
+            }
+        }
+
+        stage('Packaging Helm') {
+            steps {
+                script {
+                    // Implement Helm packaging steps here
+                    // Example: sh 'helm package ./your-helm-chart'
+                }
+            }
+        }
+
+        stage('Push to Terraform ECR') {
+            steps {
+                script {
+                    // Implement Terraform ECR push steps here
+                    // Example: Run Terraform scripts to push Docker image to ECR
                 }
             }
         }
