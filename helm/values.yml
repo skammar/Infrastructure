@@ -1,0 +1,25 @@
+# values.yaml
+
+# Application configuration
+app:
+  name: your-app-name
+  version: 1.0.0
+  image:
+    repository: your-docker-repo
+    name: your-docker-image
+    tag: latest
+
+# Kubernetes configuration
+kubernetes:
+  deployment:
+    replicas: 1
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 8080
+
+# Environment-specific configurations
+environment:
+  variable1: value1
+  variable2: value2
+  # Add more environment-specific variables as needed
